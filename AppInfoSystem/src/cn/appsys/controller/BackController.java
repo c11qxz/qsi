@@ -10,8 +10,7 @@ import cn.appsys.service.BackService;
 @Controller
 public class BackController {
 
-	@Autowired
-	BackService backservice;
+	
 	
 	@RequestMapping(value="/backendlogin.html")
 	public String backendlogin(){

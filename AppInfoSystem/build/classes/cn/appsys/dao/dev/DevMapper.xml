@@ -7,4 +7,31 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="devlogin" resultType="Dev_user">
 	select id,devCode,devName,devPassword,devEmail,devInfo,createdBy,creationDate,modifyBy,modifyDate from dev_user where devCode=#{devCode} and devPassword=#{devPassword}
 	</select>
+	
+	<select id="selectDevlist" resultType="App_category" parameterType="App_category">
+		select id,categoryCode,categoryName,parentId,createdBy,creationTime,modifyBy,modifyDate from app_category 
+		<where>
+			<if test="parentId == 0">
+				and parentId is null
+			</if>
+			<if test="parentId!=0">
+				and parentId = #{parentId}
+			</if>
+		</where>
+	</select>
+	
+	<select id="statusList" resultType="Data_dictionary">
+		SELECT 	id,typeCode,typeName,valueId,valueName FROM data_dictionary where typeName=#{typeName}
+	</select>
+
+	<select id="appList" resultType="App_info">
+	SELECT 	app_info.id,softwareName,APKName,softwareSize,d1.valueName AS flatformName,categoryLevel1,a1.categoryName AS categoryLevel1Name,categoryLevel2,a2.categoryName AS categoryLevel2Name,categoryLevel3,a3.categoryName AS categoryLevel3Name,STATUS,d2.valueName AS statusName,downloads,versionId,versionNo FROM app_info 
+		INNER JOIN data_dictionary  AS d1 ON d1.valueId = app_info.flatformId
+		INNER JOIN data_dictionary AS d2 ON d2.valueId = app_info.status
+		INNER JOIN app_category AS a1 ON a1.id =app_info.categoryLevel1
+		INNER JOIN app_category AS a2 ON a2.id =app_info.categoryLevel2
+		INNER JOIN app_category AS a3 ON a3.id =app_info.categoryLevel3
+		INNER JOIN app_version ON app_version.id = app_info.versionId
+		WHERE d1.typeName='所属平台' AND d2.typeName='APP状态'
+	</select>
 </mapper>

@@ -28,13 +28,14 @@ public class App_info {
 	private String logoPicPath;
 	private String logoLocPath;
 	private int versionId;
+	private String flatformName;
+	private String categoryLevel1Name;
+	private String categoryLevel2Name;
+	private String categoryLevel3Name;
+	private String statusName;
+	private String versionNo;
 	
 	
-	
-	
-	public App_info() {
-		
-	}
 	public App_info(int id, String softwareName, String aPKName,
 			String supportROM, String interfaceLanguage, double softwareSize,
 			Date updateDate, int devId, String appInfo, int status,
@@ -42,7 +43,9 @@ public class App_info {
 			int categoryLevel3, int downloads, int createdBy,
 			Date creationDate, int modifyBy, Date modifyDate,
 			int categoryLevel1, int categoryLevel2, String logoPicPath,
-			String logoLocPath, int versionId) {
+			String logoLocPath, int versionId, String flatformName,
+			String categoryLevel1Name, String categoryLevel2Name,
+			String categoryLevel3Name, String statusName, String versionNo) {
 		super();
 		this.id = id;
 		this.softwareName = softwareName;
@@ -68,7 +71,55 @@ public class App_info {
 		this.logoPicPath = logoPicPath;
 		this.logoLocPath = logoLocPath;
 		this.versionId = versionId;
+		this.flatformName = flatformName;
+		this.categoryLevel1Name = categoryLevel1Name;
+		this.categoryLevel2Name = categoryLevel2Name;
+		this.categoryLevel3Name = categoryLevel3Name;
+		this.statusName = statusName;
+		this.versionNo = versionNo;
 	}
+	public String getVersionNo() {
+		return versionNo;
+	}
+	public void setVersionNo(String versionNo) {
+		this.versionNo = versionNo;
+	}
+	public String getCategoryLevel1Name() {
+		return categoryLevel1Name;
+	}
+	public void setCategoryLevel1Name(String categoryLevel1Name) {
+		this.categoryLevel1Name = categoryLevel1Name;
+	}
+	public String getCategoryLevel2Name() {
+		return categoryLevel2Name;
+	}
+	public void setCategoryLevel2Name(String categoryLevel2Name) {
+		this.categoryLevel2Name = categoryLevel2Name;
+	}
+	public String getCategoryLevel3Name() {
+		return categoryLevel3Name;
+	}
+	public void setCategoryLevel3Name(String categoryLevel3Name) {
+		this.categoryLevel3Name = categoryLevel3Name;
+	}
+	public String getStatusName() {
+		return statusName;
+	}
+	public void setStatusName(String statusName) {
+		this.statusName = statusName;
+	}
+	public String getFlatformName() {
+		return flatformName;
+	}
+	public void setFlatformName(String flatformName) {
+		this.flatformName = flatformName;
+	}
+	public App_info() {
+		
+	}
+	
+	
+	
 	public int getId() {
 		return id;
 	}
